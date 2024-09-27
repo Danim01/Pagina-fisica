@@ -1,0 +1,8 @@
+.inverted {
+  order: 1;
+}
+
+.label {
+  display: flex;
+  gap: .5rem;
+}

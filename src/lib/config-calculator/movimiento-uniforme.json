@@ -1,0 +1,54 @@
+{
+  "movimiento-uniforme": [
+    {
+      "formulario": "Posición",
+      "equation": "x_final = x_inicial + v * t",
+      "campos": [
+        {
+          "label": "Posición Final",
+          "id": "campo-mru-x_final",
+          "input": {
+            "name": "x_final",
+            "id": "mru-posicion-x_final",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Posición Inicial",
+          "id": "campo-mru-x_inicial",
+          "input": {
+            "name": "x_inicial",
+            "id": "mru-posicion-x_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad",
+          "id": "campo-mru-v",
+          "input": {
+            "name": "v",
+            "id": "mru-posicion-v",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Tiempo",
+          "id": "campo-mru-t",
+          "input": {
+            "name": "tiempo",
+            "id": "mru-posicion-t",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        }
+      ]
+    }
+  ]
+}

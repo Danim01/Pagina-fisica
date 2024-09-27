@@ -1,9 +1,14 @@
 ---
+import "@fontsource-variable/chivo"
+import "@fontsource-variable/montserrat"
+import Arrow from "../components/Arrow.astro"
+
 interface Props {
 	title: string;
+	arrow?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, arrow } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,36 +20,156 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<!-- Katex -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+			integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"
+			crossorigin="anonymous"
+		/>
 	</head>
 	<body>
-		<slot />
+		<header>
+			<div class="container">
+				{ arrow && (
+					<a href="/">
+						<Arrow />
+					</a>
+				)}
+				<p class="header-title">Física <span>{title}</span></p>
+			</div>
+		</header>
+		<div>
+			<slot />
+		</div>
+		<footer>
+			<p>Daniela Buitrago Montoya</p>
+			<a href="mailto:danibuimon.09@gmail.com">danibuimon.09@gmail.com</a>
+		</footer>
 	</body>
 </html>
+
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		--air-superiority-blue: hsla(198, 44%, 57%, 1);
+		--shamrock-green: hsla(142, 37%, 45%, 1);
+		--prussian-blue: hsla(207, 43%, 16%, 1);
+		--midnight-green: hsla(183, 100%, 14%, 1);
+		--carrot-orange: #ef9001;
+		--green-gradient: linear-gradient(to-right, var(--shamrock-green), var(--midnight-green));
 	}
+	/*
+		1. Use a more-intuitive box-sizing model.
+	*/
+	*, *::before, *::after {
+		box-sizing: border-box;
+	}
+
+	/*
+		2. Remove default margin
+	*/
+	* {
+		margin: 0;
+	}
+
+	/*
+		Typographic tweaks!
+		3. Add accessible line-height
+		4. Improve text rendering
+	*/
+	body {
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+	}
+
+	/*
+		5. Improve media defaults
+	*/
+	img, picture, video, canvas, svg {
+		display: block;
+		max-width: 100%;
+	}
+
+	/*
+		6. Remove built-in form typography styles
+	*/
+	input, button, textarea, select {
+		font: inherit;
+	}
+
+	/*
+		7. Avoid text overflows
+	*/
+	p, h1, h2, h3, h4, h5, h6 {
+		overflow-wrap: break-word;
+	}
+
+	/*
+		8. Create a root stacking context
+	*/
+	#root, #__next {
+		isolation: isolate;
+	}
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
+		font-family: 'Montserrat Variable', sans-serif;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Chivo Variable', sans-serif;
+		line-height: 1.35;
+		margin-bottom: .5rem;
+	}
+	
+	a {
+		text-decoration: none;
+		color: inherit;
+		background:
+			linear-gradient(to right, #fff, #fff),
+			linear-gradient(to right, hsla(198, 44%, 57%, 1), hsla(142, 37%, 45%, 1), hsla(183, 100%, 14%, 1));
+		background-size: 100% 0.1em, 0 0.1em;
+		background-position: 100% 100%, 0 100%;
+		background-repeat: no-repeat;
+		line-height: 1.2;
+		text-decoration: none;
+		transition: background-size 400ms;
+	}
+
+	a:is(:hover, :focus) {
+		background-size: 0 0.1em, 100% 0.1em;
+	}
+
+	main {
+		padding: 1rem 0;
+	}
+
+	.header-title {
+		font-family: 'Chivo Variable', sans-serif;
+		font-weight: 600;
+		font-size: 2.5rem;
+	}
+
+	.header-title span {
+		font-weight: 300;
+		font-size: 1rem;
+	}
+
+	.container {
+		width: 90%;
+		margin-inline: auto;
+	}
+
+	header {
+		padding: 24px 0px;
+		color: white;
+		background: linear-gradient(220deg, var(--shamrock-green), var(--midnight-green));
+	}
+
+	footer {
+		background-color: var(--prussian-blue);
+		color: white;
+		text-align: center;
+		padding: 16px;
 	}
 </style>

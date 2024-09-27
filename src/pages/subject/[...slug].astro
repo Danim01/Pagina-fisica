@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import Calculator from '@components/Calculator'
+import { type ConfigObject } from '@types';
+
+export async function getStaticPaths() {
+  const subjectEntries = await getCollection('subject');
+
+  return subjectEntries.map(entry => ({
+    params: {
+      slug: entry.slug
+    },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render(); 
+
+const calculatorsArray = await Astro.glob("../../lib/config-calculator/*.json");
+const calculatorConfig = calculatorsArray.find((file) => file.default[entry.slug])?.default as ConfigObject;
+
+---
+
+<Layout title={entry.data.title} arrow >
+  <main>
+    <div class="container">
+      <h1>{entry.data.title}</h1>
+      <img src={`/${entry.data.coverPhotoSrc}`} alt={entry.data.coverPhotoAlt}>
+      <Content />
+    </div>
+    {
+      calculatorConfig && (
+      <div class="calculators">
+        <div class="container calculators__container">
+          {calculatorConfig[entry.slug].map((configForm) => (
+            <Calculator calculatorForm={configForm} client:load />
+          ))}
+        </div>
+      </div>
+      )
+    }
+  </main>
+</Layout>
+
+<style>
+  main {
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .calculators {
+    padding: 1rem 0;
+    margin-top: 2rem;
+    background-color: hsla(198, 44%, 80%, 1);
+  }
+
+  .calculators__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+</style>

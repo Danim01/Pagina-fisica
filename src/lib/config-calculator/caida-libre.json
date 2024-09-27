@@ -1,0 +1,146 @@
+{
+  "caida-libre": [
+    {
+      "formulario": "Velocidad",
+      "equation": "v = v_inicial + g * t",
+      "campos": [
+        {
+          "label": "Velocidad",
+          "id": "campo-velocidad-v",
+          "units": "speed",
+          "input": {
+            "name": "v",
+            "id": "caida-libre-velocidad-v",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad Inicial",
+          "id": "campo-velocidad-v_inicial",
+          "units": "speed",
+          "input": {
+            "name": "v_inicial",
+            "id": "caida-libre-velocidad-v_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Tiempo",
+          "id": "campo-velocidad-t",
+          "units": "time",
+          "input": {
+            "name": "t",
+            "id": "caida-libre-velocidad-t",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        }
+      ]
+    },
+    {
+      "formulario": "Posición",
+      "equation": "y = y_inicial + v_inicial * t + 1/2 * g * t^2",
+      "campos": [
+        {
+          "label": "Altura",
+          "id": "campo-posicion-y",
+          "input": {
+            "name": "y",
+            "id": "caida-libre-posicion-y",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Altura Inicial",
+          "id": "campo-posicion-y_inicial",
+          "input": {
+            "name": "y_inicial",
+            "id": "caida-libre-posicion-y_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad Inicial",
+          "id": "campo-posicion-v_inicial",
+          "input": {
+            "name": "v_inicial",
+            "id": "caida-libre-posicion-v_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Tiempo",
+          "id": "campo-posicion-t",
+          "input": {
+            "name": "t",
+            "id": "caida-libre-posicion-t",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        }
+      ]
+    },
+    {
+      "formulario": "Velocidad en función de la posición",
+      "equation": "v^2 = v_inicial^2 + 2 * g * (y - y_inicial)",
+      "campos": [
+        {
+          "label": "Velocidad",
+          "id": "campo-vefp-v",
+          "input": {
+              "name": "v",
+              "id": "caida-libre-vefp-v",
+              "type": "number",
+              "placeholder": "0",
+              "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad Inicial",
+          "id": "campo-vefp-v_inicial",
+          "input": {
+              "name": "v_inicial",
+              "id": "caida-libre-vefp-v_inicial",
+              "type": "number",
+              "placeholder": "0",
+              "defaultValue": 0
+          }
+        },
+        {
+          "label": "Altura",
+          "id": "campo-vefp-y",
+          "input": {
+              "name": "y",
+              "id": "caida-libre-vefp-y",
+              "type": "number",
+              "placeholder": "0",
+              "defaultValue": 0
+          }
+        },
+        {
+          "label": "Altura Inicial",
+          "id": "campo-vefp-y_inicial",
+          "input": {
+              "name": "y_Inicial",
+              "id": "caida-libre-vefp-y_inicial",
+              "type": "number",
+              "placeholder": "0",
+              "defaultValue": 0
+          }
+        }
+      ]
+    }
+  ]
+}

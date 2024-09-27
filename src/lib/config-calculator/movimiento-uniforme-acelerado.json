@@ -1,0 +1,239 @@
+{
+  "movimiento-uniforme-acelerado": [
+    {
+      "formulario": "Velocidad Como Función Del Tiempo",
+      "equation": "v_final = v_inicial + a * t",
+      "campos": [
+        {
+          "label": "Velocidad Final",
+          "id": "campo-vcft-v_final",
+          "units": "speed",
+          "input": {
+            "name": "v_final",
+            "id": "mua-vcft-v_final",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad Inicial",
+          "id": "campo-vcft-v_inicial",
+          "input": {
+            "name": "v_inicial",
+            "units": "speed",
+            "id": "mua-vcft-v_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Aceleración",
+          "id": "campo-vcft-a",
+          "input": {
+            "name": "a",
+            "id": "mua-vcft-a",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Tiempo",
+          "id": "campo-vcft-t",
+          "input": {
+            "name": "t",
+            "id": "mua-vcft-t",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        }
+      ]
+    },
+    {
+      "formulario": "Posición como función de velocidad",
+      "equation": "x_final = x_inicial + 1/2 * (v_inicial + v_final) * t",
+      "campos":[
+        {
+          "label": "Posición Final",
+          "id": "campo-pcfv-x_final",
+          "input": {
+            "name": "x_final",
+            "id": "mua-pcfv-x_final",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Posición Inicial",
+          "id": "campo-pcfv-x_inicial",
+          "input": {
+            "name": "x_inicial",
+            "id": "mua-pcfv-x_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad Inicial",
+          "id": "campo-pcfv-v_inicial",
+          "input": {
+            "name": "v_inicial",
+            "id": "mua-pcfv-v_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad Final",
+          "id": "campo-pcfv-v_final",
+          "input": {
+            "name": "v_final",
+            "id": "mua-pcfv-v_final",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Tiempo",
+          "id": "campo-pcfv-t",
+          "input": {
+            "name": "t",
+            "id": "mua-pcfv-t",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        }
+      ]
+    },
+    {
+      "formulario": "Posición como función del tiempo",
+      "equation": "x_final = x_inicial + v_inicial + 1/2 * a * t^2",
+      "campos": [
+        {
+          "label": "Posición Final",
+          "id": "campo-pcft-x_final",
+          "input": {
+            "name": "x_final",
+            "id": "mua-pcft-x_final",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Posición Inicial",
+          "id": "campo-pcft-x_inicial",
+          "input": {
+            "name": "x_inicial",
+            "id": "mua-pcft-x_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad Inicial",
+          "id": "campo-pcft-v_inicial",
+          "input": {
+            "name": "v_inicial",
+            "id": "mua-pcft-v_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Aceleración",
+          "id": "campo-pcft-a",
+          "input": {
+            "name": "a",
+            "id": "mua-pcft-a",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Tiempo",
+          "id": "campo-pcft-t",
+          "input": {
+            "name": "t",
+            "id": "mua-pcft-t",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        }
+      ]
+    },
+    {
+      "formulario": "Velocidad como función de la posición",
+      "equation": "v_final^2 = v_inicial^2 + 2 * a * (x_final - x_inicial)",
+      "campos": [
+        {
+          "label": "Velocidad Final",
+          "id": "campo-vcfp-v_final",
+          "input": {
+            "name": "v_final",
+            "id": "mua-vcfp-v_final",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Velocidad Inicial",
+          "id": "campo-vcfp-v_inicial",
+          "input": {
+            "name": "v_inicial",
+            "id": "mua-vcfp-v_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Aceleración",
+          "id": "campo-vcfp-a",
+          "input": {
+            "name": "a",
+            "id": "mua-vcfp-a",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Posición Final",
+          "id": "campo-vcfp-x_final",
+          "input": {
+            "name": "x_final",
+            "id": "mua-vcfp-x_final",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        },
+        {
+          "label": "Posición Inicial",
+          "id": "campo-vcfp-x_inicial",
+          "input": {
+            "name": "x_inicial",
+            "id": "mua-vcfp-x_inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
+          }
+        }
+      ]
+    }
+  ]
+}
