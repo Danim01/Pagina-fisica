@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import Calculator from '@components/Calculator'
 import { type ConfigObject } from '@types';
+import CalculatorUC from '@components/CalculatorUC';
 
 export async function getStaticPaths() {
   const subjectEntries = await getCollection('subject');
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render(); 
+const { Content } = await entry.render();
 
 const calculatorsArray = await Astro.glob("../../lib/config-calculator/*.json");
 const calculatorConfig = calculatorsArray.find((file) => file.default[entry.slug])?.default as ConfigObject;
@@ -35,7 +36,11 @@ const calculatorConfig = calculatorsArray.find((file) => file.default[entry.slug
       <div class="calculators">
         <div class="container calculators__container">
           {calculatorConfig[entry.slug].map((configForm) => (
-            <Calculator calculatorForm={configForm} client:load />
+            entry.slug === "conversion-de-unidades" ? (
+              <CalculatorUC calculatorForm={configForm} client:load />
+            ) : (
+              <Calculator calculatorForm={configForm} client:load />
+            )
           ))}
         </div>
       </div>
@@ -60,5 +65,17 @@ const calculatorConfig = calculatorsArray.find((file) => file.default[entry.slug
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  @media screen and (min-width: 720px) {
+    main {
+      display: flex;
+      gap: 2rem;
+      padding: 0;
+    }
+
+    .calculators {
+      margin-top: 0;
+    }
   }
 </style>

@@ -1,12 +1,31 @@
 ---
-import "@fontsource-variable/chivo"
-import "@fontsource-variable/montserrat"
-import Arrow from "../components/Arrow.astro"
+import "@fontsource-variable/chivo";
+import "@fontsource-variable/montserrat";
+import Arrow from "../components/Arrow.astro";
+import { getFirestore } from "firebase-admin/firestore";
+import { app } from "src/firebase/server";
 
 interface Props {
 	title: string;
 	arrow?: boolean;
 }
+
+interface Comment {
+	id: string
+	name: string
+	comment: string
+	createdAt: Date
+}
+
+const db = getFirestore(app);
+const commentsRef = db.collection("comments");
+const commentsSnapshot = await commentsRef.orderBy("createdAt", "desc").get();
+const comments = commentsSnapshot.docs.map((doc) => ({
+	id: doc.id,
+	...doc.data(),
+	createdAt: doc.data().createdAt.toDate(),
+})) as Comment[];
+console.log(comments[0].createdAt)
 
 const { title, arrow } = Astro.props;
 ---
@@ -42,9 +61,54 @@ const { title, arrow } = Astro.props;
 		<div>
 			<slot />
 		</div>
-		<footer>
-			<p>Daniela Buitrago Montoya</p>
-			<a href="mailto:danibuimon.09@gmail.com">danibuimon.09@gmail.com</a>
+		<footer id="footer">
+			<div class="container">
+				<div>
+					<h2>Comentarios</h2>
+					<form class="comment-form" method="post" action="/api/comments" enctype="application/x-www-form-urlencoded">
+						<label>
+							Nombre
+							<input type="text" placeholder="Daniela" required name="name"/>
+						</label>
+						<label>
+							Comentario
+							<textarea name="comment" rows="5"></textarea>
+						</label>
+						<button type="submit">Comentar</button>
+					</form>
+				</div>
+				<ul class="commentaries">
+					{
+						comments.map((comment) => (
+							<li class="commentaries__item">
+								<div class="commentaries__item-header">
+									<h3 title={comment.name}>
+										{comment.name}
+									</h3>
+									<p>
+										{
+											comment.createdAt.toLocaleDateString("es-CL", {
+												year: "numeric",
+												month: "short",
+												day: "numeric",
+												hour: "2-digit",
+												minute: "2-digit",
+											})
+										}
+									</p>
+								</div>
+								<p class="commentaries__comment">
+									{comment.comment}
+								</p>
+							</li>
+						))
+					}
+				</ul>
+				<div>
+					<p>Daniela Buitrago Montoya</p>
+					<a href="mailto:danibuimon.09@gmail.com">danibuimon.09@gmail.com</a>
+				</div>
+			</div>
 		</footer>
 	</body>
 </html>
@@ -170,6 +234,53 @@ const { title, arrow } = Astro.props;
 		background-color: var(--prussian-blue);
 		color: white;
 		text-align: center;
-		padding: 16px;
+		padding-top: 16px;
+		padding-bottom: 24px;
+	}
+
+	.comment-form {
+		margin-bottom: 2rem;
+
+		label {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.commentaries {
+		list-style-type: none;
+		text-align: left;
+		padding-left: 0;
+	}
+	
+	.commentaries__item {
+		margin-bottom: 2rem;
+	}
+
+	.commentaries__item-header {
+		display: flex;
+		gap: .5rem;
+		justify-content: space-between;
+		align-items: flex-end;
+		overflow-y: visible;
+		font-family: 'Montserrat Variable', sans-serif;
+		margin-bottom: .5rem;
+
+		h3 {
+			height: 100%;
+			margin: 0;
+			text-transform: capitalize;
+			width: 160px;
+			white-space: nowrap;
+			overflow-x: hidden;
+			overflow-y: visible;
+			text-overflow: ellipsis;
+		}
+
+		p {
+			font-size: 12px;
+			line-height: 1.9;
+		}
 	}
 </style>

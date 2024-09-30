@@ -47,7 +47,7 @@ export default function Calculator({ calculatorForm }: Props){
   return (
     <div className={styles.calculator}>
       <h2>{calculatorForm.formulario}</h2>
-      <div>
+      <div className={styles["radio-container"]}>
         {calculatorForm.campos.map((campo) => (
           <Input
             key={campo.id}
@@ -55,12 +55,13 @@ export default function Calculator({ calculatorForm }: Props){
             type="radio"
             value={campo.id}
             inverted
+            labelFull
             name={`${calculatorForm.formulario}-radio`}
             onChange={handleChange}
           />
         ))}
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         {
           fieldName && (
             <>

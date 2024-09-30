@@ -10,6 +10,11 @@ interface Params {
 }
 
 function calculate ({ equation, initialValues, solveFor }: Params) {
+  console.log({
+    equation,
+    initialValues,
+    solveFor
+  })
   const initialValuesWithConstants = {
     g: "9.8",
     ...initialValues
@@ -19,6 +24,8 @@ function calculate ({ equation, initialValues, solveFor }: Params) {
     nerdamer(equation, initialValuesWithConstants)
     .solveFor(solveFor)
     .text()
+
+  console.log(result, typeof result)
 
   return result;
 }

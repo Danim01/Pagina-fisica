@@ -7,22 +7,22 @@
           "label": "Unidad Inicial",
           "id": "campo-conversion-unidades-unidad-inicial",
           "input": {
-              "name": "unidad-inicial",
-              "id": "conversion-unidades-unidad-inicial",
-              "type": "number",
-              "placeholder": "0",
-              "defaultValue": 0
+            "name": "unidad-inicial",
+            "id": "conversion-unidades-unidad-inicial",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
           }
         },
         {
           "label": "Unidad Final",
           "id": "campo-conversion-unidades-unidad-final",
           "input": {
-              "name": "unidad-final",
-              "id": "conversion-unidades-unidad-final",
-              "type": "number",
-              "placeholder": "0",
-              "defaultValue": 0
+            "name": "unidad-final",
+            "id": "conversion-unidades-unidad-final",
+            "type": "number",
+            "placeholder": "0",
+            "defaultValue": 0
           }
         }
       ]
