@@ -133,7 +133,7 @@
           "label": "Altura Inicial",
           "id": "campo-vefp-y_inicial",
           "input": {
-              "name": "y_Inicial",
+              "name": "y_inicial",
               "id": "caida-libre-vefp-y_inicial",
               "type": "number",
               "placeholder": "0",
