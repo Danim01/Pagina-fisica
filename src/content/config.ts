@@ -7,7 +7,6 @@ const subjectCollection = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     coverPhoto: image().refine((img) => {
-      console.log("Image dimensions:", img); // For debugging purposes
       return img.width >= 100;
     }, {
       message: "La imagen debe tener al menos 100 pixeles"
