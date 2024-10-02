@@ -4,9 +4,14 @@ import { defineCollection, z } from 'astro:content';
 // 2. Define tu colección(es)
 const subjectCollection = defineCollection({
   type: "content",
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
-    coverPhotoSrc: z.string(),
+    coverPhoto: image().refine((img) => {
+      console.log("Image dimensions:", img); // For debugging purposes
+      return img.width >= 100;
+    }, {
+      message: "La imagen debe tener al menos 100 pixeles"
+    }),
     coverPhotoAlt: z.string(),
     excerpt: z.string()
   })

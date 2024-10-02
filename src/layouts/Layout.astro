@@ -51,11 +51,11 @@ const { title, arrow } = Astro.props;
 		<header>
 			<div class="container">
 				{ arrow && (
-					<a href="/">
+					<a href="/" class="arrow-back">
 						<Arrow />
 					</a>
 				)}
-				<p class="header-title">Física <span>{title}</span></p>
+				<p class="header-title"><span>Física</span> {title}</p>
 			</div>
 		</header>
 		<div>
@@ -106,7 +106,7 @@ const { title, arrow } = Astro.props;
 				</ul>
 				<div>
 					<p>Daniela Buitrago Montoya</p>
-					<a href="mailto:danibuimon.09@gmail.com">danibuimon.09@gmail.com</a>
+					<a class="hover-underline" href="mailto:danibuimon.09@gmail.com">danibuimon.09@gmail.com</a>
 				</div>
 			</div>
 		</footer>
@@ -185,10 +185,13 @@ const { title, arrow } = Astro.props;
 		line-height: 1.35;
 		margin-bottom: .5rem;
 	}
-	
+
 	a {
 		text-decoration: none;
 		color: inherit;
+	}
+	
+	.hover-underline {
 		background:
 			linear-gradient(to right, #fff, #fff),
 			linear-gradient(to right, hsla(198, 44%, 57%, 1), hsla(142, 37%, 45%, 1), hsla(183, 100%, 14%, 1));
@@ -200,7 +203,7 @@ const { title, arrow } = Astro.props;
 		transition: background-size 400ms;
 	}
 
-	a:is(:hover, :focus) {
+	.hover-underline:is(:hover, :focus) {
 		background-size: 0 0.1em, 100% 0.1em;
 	}
 
@@ -210,17 +213,27 @@ const { title, arrow } = Astro.props;
 
 	.header-title {
 		font-family: 'Chivo Variable', sans-serif;
+		font-weight: 300;
+		font-size: 1rem;
+		line-height: 1.2;
+	}
+	
+	.header-title span {
 		font-weight: 600;
 		font-size: 2.5rem;
 	}
 
-	.header-title span {
-		font-weight: 300;
-		font-size: 1rem;
+	.arrow-back {
+		margin-bottom: 1rem;
+		display: block;
+		width: fit-content;
+		padding: .25rem;
+		padding-left: 0;
 	}
 
 	.container {
 		width: 90%;
+		max-width: 1200px;
 		margin-inline: auto;
 	}
 
@@ -281,6 +294,35 @@ const { title, arrow } = Astro.props;
 		p {
 			font-size: 12px;
 			line-height: 1.9;
+		}
+	}
+
+	button {
+		background-color: var(--midnight-green);
+		color: white;
+		border: 1px solid var(--air-superiority-blue);
+		border-radius: 8px;
+		padding: 4px 16px;
+		transition: background-color 150ms ease-in, transform 200ms ease;
+		box-shadow: 2px 2px 5px rgba(0, 0, 0, .4);
+		
+		&:hover {
+			background-color: hsla(183, 100%, 20%, 1);
+
+		}
+
+		&:active {
+			transform: scale(.96);
+		}
+	}
+
+	input, textarea {
+		border-radius: 8px;
+		border: none;
+		padding: 4px 8px;
+		
+		&:focus, &:active {
+			outline: 2px solid var(--midnight-green);
 		}
 	}
 </style>

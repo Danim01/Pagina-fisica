@@ -1,22 +1,14 @@
 ---
-interface Props {
-	title: string;
-	excerpt: string;
-	href: string;
-	image: {
-		src: string;
-		alt: string;
-	}
-}
+import { Image } from 'astro:assets';
 
-const { href, title, excerpt, image } = Astro.props;
+const { href, title, excerpt, image, imageAlt } = Astro.props;
 ---
 
 <li>
 	<a href={href} class="card">
 		<div class="card__container">
-			<figure class="card__img">
-				<img src={image.src} alt={image.alt} />
+			<figure class="card__figure">
+				<Image src={image} alt={imageAlt} class="card_image" />
 			</figure>
 			<div class="card__description">
 				<h2>{title}</h2>
@@ -31,11 +23,17 @@ const { href, title, excerpt, image } = Astro.props;
 		list-style-type: none;
 	}
 
+	.card {
+		height: 100%;
+		display: block;
+	}
+
 	.card__container {
 		padding: 16px;
 		padding-bottom: 24px;
 		border: #cfcfcf solid 1px;
 		border-radius: 20px;
+		height: 100%;
 	}
 
 	.card__description {
@@ -53,8 +51,18 @@ const { href, title, excerpt, image } = Astro.props;
 		font-size: 16px;
 	}
 
-	.card__img {
+	.card__figure {
 		border-radius: 4px;
 		margin-bottom: 16px;
+		overflow: hidden;
 	}
+
+	.card_image {
+		object-fit: cover;
+		width: 100%;
+		min-height: auto;
+  	height: 100%;
+		aspect-ratio: 1 / 1;
+	}
+
 </style>

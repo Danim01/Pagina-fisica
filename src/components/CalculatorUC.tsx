@@ -5,6 +5,7 @@ import convert, { type Measure, type Unit } from "convert-units"
 import translateUnits from "@lib/translateUnits"
 import { useEffect, useState, useRef } from "react"
 import calculateConversion from "@lib/calculateConversion"
+import style from './calculatorUC.module.css';
 
 interface Props {
   calculatorForm: CalculatorForm
@@ -49,7 +50,7 @@ export default function CalculatorUC({ calculatorForm }: Props) {
       let toUnit;
 
       if (event.target.name.startsWith('unidad-inicial')) {
-        fromNumber = Number(formData["unidad-inicial"])
+        fromNumber = parseInt(String(formData["unidad-inicial"]), 10)
         fromUnit = formData["unidad-inicial-unit"] as Unit
         toUnit = formData["unidad-final-unit"] as Unit
 
@@ -62,7 +63,7 @@ export default function CalculatorUC({ calculatorForm }: Props) {
         setFinalInputValue(result)
         setInitialInputValue(fromNumber)
       } else {
-        fromNumber = Number(formData["unidad-final"])
+        fromNumber = parseInt(String(formData["unidad-final"]), 10)
         fromUnit = formData["unidad-final-unit"] as Unit
         toUnit = formData["unidad-inicial-unit"] as Unit
 
@@ -78,6 +79,11 @@ export default function CalculatorUC({ calculatorForm }: Props) {
     }
   }
 
+  const handleReset = () => {
+    setInitialInputValue(0)
+    setFinalInputValue(0)
+  }
+
   useEffect(() => {
     const newUnits = convert().possibilities(measureGroup)
     setUnits(newUnits)
@@ -85,52 +91,67 @@ export default function CalculatorUC({ calculatorForm }: Props) {
 
   return (
     <div>
+      <h2>Calculadora de conversiones</h2>
       <form ref={formRef} id="convert-units-form">
-        <select name="measure" id="" defaultValue={"length"} onChange={handleMeasureChange}>
+        <label className={style.measureLabel}>
+          <span>Seleccione la medida</span>
+          <select
+            name="measure"
+            defaultValue={"length"}
+            onChange={handleMeasureChange}
+            className={`${style.select} ${style.measureSelect} ${style.capitalize}`}
+          >
+            {
+              measures.map((measure, i) => (
+                <option
+                  key={`measure-calculatoruc-${i}`}
+                  value={measure}
+                  className={style.capitalize}
+                >
+                  {translateUnits(measure)}
+                </option>
+              ))
+            }
+          </select>
+        </label>
+        <div className={style.fieldsContainer}>
           {
-            measures.map((measure, i) => (
-              <option
-                key={`measure-calculatoruc-${i}`}
-                value={measure}
-              >
-                {translateUnits(measure)}
-              </option>
+            calculatorForm.campos.map((campo, i) => (
+              <div key={`measure-unit-calculatoruc${i}`} className={style.conversionContainer}>
+                <Input
+                  label={campo.label}
+                  required
+                  labelClassName={style.conversionLabel}
+                  {...campo.input}
+                  onChange={handleInputChange}
+                  className={style.conversionInput}
+                  value={
+                    campo.input.name === 'unidad-inicial'
+                      ? initialInputValue
+                      : finalInputValue
+                  }
+                />
+                <select
+                  name={`${campo.input.name}-unit`}
+                  onChange={handleInputChange}
+                  className={`${style.select} ${style.unitSelect}`}
+                >
+                  {
+                    units.map((unit, i) => (
+                      <option
+                        key={`unit-calculatoruc-${i}`}
+                        value={unit}
+                      >
+                        {unit}
+                      </option>
+                    ))
+                  }
+                </select>
+              </div>
             ))
           }
-        </select>
-        {
-          calculatorForm.campos.map((campo, i) => (
-            <div key={`measure-unit-calculatoruc${i}`}>
-              <Input
-                label={campo.label}
-                required
-                {...campo.input}
-                onChange={handleInputChange}
-                value={
-                  campo.input.name === 'unidad-inicial'
-                    ? initialInputValue
-                    : finalInputValue
-                }
-              />
-              <select
-                name={`${campo.input.name}-unit`}
-                onChange={handleInputChange}
-              >
-                {
-                  units.map((unit, i) => (
-                    <option
-                      key={`unit-calculatoruc-${i}`}
-                      value={unit}
-                    >
-                      {unit}
-                    </option>
-                  ))
-                }
-              </select>
-            </div>
-          ))
-        }
-        <button form="convert-units-form" type="reset">Reiniciar</button>
+        </div>
+        <button form="convert-units-form" type="button" onClick={handleReset}>Reiniciar</button>
       </form>
     </div>
   )

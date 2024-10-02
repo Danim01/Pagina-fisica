@@ -15,16 +15,14 @@ const subjects = await getCollection("subject");
 			{
 				subjects.map(subject => {
 					const { slug, data } = subject
-					const { excerpt, coverPhotoSrc, coverPhotoAlt, title } = data
+					const { excerpt, coverPhoto, coverPhotoAlt, title } = data
 
 					return (
 						<Card
 							href={`/subject/${slug}`}
 							title={title}
-							image={{
-								src: coverPhotoSrc,
-								alt: coverPhotoAlt
-							}}
+							image={coverPhoto}
+							imageAlt={coverPhotoAlt}
 							excerpt={excerpt}
 						/>
 					)
@@ -43,5 +41,12 @@ const subjects = await getCollection("subject");
 
 	h1 {
 		margin-bottom: 2rem;
+	}
+
+	@media screen and (min-width: 1024px) {
+		.container-card {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 </style>

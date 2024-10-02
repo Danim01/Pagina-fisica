@@ -1,6 +1,6 @@
 ---
   title: "Vectores"
-  coverPhotoSrc: "vectores.jpg"
+  coverPhoto: "@assets/vectores.png"
   coverPhotoAlt: "vector"
   excerpt: "Un vector es un segmento de recta en el espacio que va de un punto a otro, es decir tiene sentido y dirección, su función es expresar las magnitudes verticales."
 ---
@@ -13,5 +13,5 @@ Se pueden representar usando las coordenadas en el plano cartesiano, indicando c
 
 <br/>
 
-Si quieres profundizar más sobre los vectores **<a href="https://users.exa.unicen.edu.ar/catedras/fisicagl/files/Apunte%20vectores.pdf" target="_blank">entra aquí</a>**
+Si quieres profundizar más sobre los vectores **<a class="hover-underline" href="https://users.exa.unicen.edu.ar/catedras/fisicagl/files/Apunte%20vectores.pdf" target="_blank">entra aquí</a>**
 

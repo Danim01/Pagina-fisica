@@ -10,8 +10,7 @@
             "name": "unidad-inicial",
             "id": "conversion-unidades-unidad-inicial",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         },
         {
@@ -21,8 +20,7 @@
             "name": "unidad-final",
             "id": "conversion-unidades-unidad-final",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         }
       ]

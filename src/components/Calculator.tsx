@@ -4,6 +4,7 @@ import Input from "./Input/Input"
 import styles from './calculator.module.css'
 import calculate from '@lib/calculate';
 import type { Expression } from 'nerdamer';
+import Katex from './Katex';
 
 interface Props {
   calculatorForm: CalculatorForm
@@ -66,6 +67,7 @@ export default function Calculator({ calculatorForm }: Props){
         {
           fieldName && (
             <>
+              <h4 style={{ textAlign: "center", marginBottom: "0" }}>Ingrese los datos necesarios</h4>
               {filteredFields.map((campo) => (
                 <Input
                   key={campo.input.id}
@@ -79,13 +81,22 @@ export default function Calculator({ calculatorForm }: Props){
           )
         }
       </form>
-      <div>
-        {
-          results?.map((result, i) => (
-            <p key={`calculator-result-${i}`}>{result.text()}</p>
-          ))
-        }
-      </div>
+      {
+        results && (
+          <div className={styles.results}>
+            <h4>Resultado{results && results?.length > 1 ? "s" : undefined}</h4>
+            <ol className={styles["results-list"]} inlist>
+              {
+                results?.map((result, i) => (
+                  <li key={`calculator-result-${i}`}>
+                    <Katex tex={result.toTeX()} className={styles["result-tex"]} />
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+        )
+      }
     </div>
   )
 }

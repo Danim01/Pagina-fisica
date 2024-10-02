@@ -1,0 +1,47 @@
+.select {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 8px;
+}
+
+.unitSelect {
+  margin-bottom: 2px;
+}
+
+.measureLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.measureSelect {
+  margin-bottom: 1rem;
+}
+
+.fieldsContainer {
+  margin-bottom: 1rem;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.conversionContainer {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.conversionContainer:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+
+.conversionLabel {
+  align-items: flex-start;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+}
+
+.conversionInput {
+  width: 100%;
+}

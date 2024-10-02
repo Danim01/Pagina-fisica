@@ -1,6 +1,6 @@
 ---
   title: "Conversión de Unidades"
-  coverPhotoSrc: "conversion-unidades.png"
+  coverPhoto: "@assets/conversion-unidades.png"
   coverPhotoAlt: "Conversion Unidades"
   excerpt: "Una unidad de medida describe la cantidad de un objeto, una magnitud física entre otros. La conversión de unidades permite cambiar entre una y otra de forma equivalente."
 ---
@@ -15,13 +15,15 @@ A veces es necesario expresar una unidad de medida en otra, esto implica el camb
 
 <br/>
 
-* 1000 [m] = 1 [km]
-* 1000 [g] = 1 [kg]
-* 100 [cm] = 1 [m]
+* $1000 [m] = 1 [km]$
+* $1000 [g] = 1 [kg]$
+* $100 [cm] = 1 [m]$
 
 <br/>
 
-Si quieres saber mas sobre conversión de unidades **<a href="https://www.ing.unrc.edu.ar/archivos/ingreso2017/complemento_fisica_3.pdf" target="_blank">entra aquí</a>**
+Si quieres saber mas sobre conversión de unidades **<a class="hover-underline" href="https://www.ing.unrc.edu.ar/archivos/ingreso2017/complemento_fisica_3.pdf" target="_blank">entra aquí</a>**.
+
+<br/>
 
 Algunos ejemplos de unidades del sistema internacional:
 
@@ -29,7 +31,7 @@ Algunos ejemplos de unidades del sistema internacional:
 
 <!-- Hacer una tabla de HTML -->
 
-<table>
+<table style="border-spacing: 8px; width: fit-content; margin-inline: auto; text-align: center; line-height: 1;">
   <thead>
     <tr>
       <th>Unidad</th>

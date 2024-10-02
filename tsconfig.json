@@ -20,6 +20,9 @@
       ],
       "@content/*": [
         "src/content/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
       ]
     }
   }

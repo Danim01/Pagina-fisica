@@ -1,6 +1,6 @@
 ---
   title: "Movimiento Rectilíneo Uniformemente Acelerado"
-  coverPhotoSrc: "mrua.png"
+  coverPhoto: "@assets/mrua.png"
   coverPhotoAlt: "Movimiento Rectilíneo Uniformemente Acelerado"
   excerpt: "El movimiento rectilíneo uniformemente acelerado es un movimiento cuya trayectoria es recta pero que su velocidad cambia y su aceleración es constante"
 ---
@@ -22,4 +22,4 @@ El movimiento rectilíneo uniformemente acelerado **(MRUA)** es un tipo de movim
 
 <br/>
 
-Si quieres profundizar más sobre el movimiento rectilíneo uniformemente acelerado **<a href="https://www.fisicalab.com/apartado/mrua" target="_blank">entra aquí</a>**
+Si quieres profundizar más sobre el movimiento rectilíneo uniformemente acelerado **<a class="hover-underline" href="https://www.fisicalab.com/apartado/mrua" target="_blank">entra aquí</a>**

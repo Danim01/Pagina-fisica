@@ -1,6 +1,6 @@
 ---
   title: "Movimiento Rectilíneo Uniforme"
-  coverPhotoSrc: "movimiento-uniforme.png"
+  coverPhoto: "@assets/movimiento-uniforme.png"
   coverPhotoAlt: "Movimiento Uniforme"
   excerpt: "Un movimiento rectilíneo uniforme es aquel que su velocidad es constante y su trayectoria es una línea recta."
 ---
@@ -25,6 +25,6 @@ Donde $x$ es posición y $t$ tiempo.
 
 <br/>
 
-Si quieres profundizar más sobre el movimiento rectilíneo uniforme **<a href="https://www.gimnasiojaibana.edu.co/admin2/public/docs/qZOYurjy3pmBAQOc9L0VApUZSibp4jnQl49nlQVF.pdf" target="_blank">entra aquí</a>**
+Si quieres profundizar más sobre el movimiento rectilíneo uniforme **<a class="hover-underline" href="https://www.gimnasiojaibana.edu.co/admin2/public/docs/qZOYurjy3pmBAQOc9L0VApUZSibp4jnQl49nlQVF.pdf" target="_blank">entra aquí</a>**
 
 

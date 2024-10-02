@@ -12,8 +12,7 @@
             "name": "v",
             "id": "caida-libre-velocidad-v",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         },
         {
@@ -24,8 +23,7 @@
             "name": "v_inicial",
             "id": "caida-libre-velocidad-v_inicial",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         },
         {
@@ -36,8 +34,7 @@
             "name": "t",
             "id": "caida-libre-velocidad-t",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         }
       ]
@@ -53,8 +50,7 @@
             "name": "y",
             "id": "caida-libre-posicion-y",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         },
         {
@@ -64,8 +60,7 @@
             "name": "y_inicial",
             "id": "caida-libre-posicion-y_inicial",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         },
         {
@@ -75,8 +70,7 @@
             "name": "v_inicial",
             "id": "caida-libre-posicion-v_inicial",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         },
         {
@@ -86,8 +80,7 @@
             "name": "t",
             "id": "caida-libre-posicion-t",
             "type": "number",
-            "placeholder": "0",
-            "defaultValue": 0
+            "placeholder": "0"
           }
         }
       ]
@@ -103,8 +96,7 @@
               "name": "v",
               "id": "caida-libre-vefp-v",
               "type": "number",
-              "placeholder": "0",
-              "defaultValue": 0
+              "placeholder": "0"
           }
         },
         {
@@ -114,8 +106,7 @@
               "name": "v_inicial",
               "id": "caida-libre-vefp-v_inicial",
               "type": "number",
-              "placeholder": "0",
-              "defaultValue": 0
+              "placeholder": "0"
           }
         },
         {
@@ -125,8 +116,7 @@
               "name": "y",
               "id": "caida-libre-vefp-y",
               "type": "number",
-              "placeholder": "0",
-              "defaultValue": 0
+              "placeholder": "0"
           }
         },
         {
@@ -136,8 +126,7 @@
               "name": "y_inicial",
               "id": "caida-libre-vefp-y_inicial",
               "type": "number",
-              "placeholder": "0",
-              "defaultValue": 0
+              "placeholder": "0"
           }
         }
       ]

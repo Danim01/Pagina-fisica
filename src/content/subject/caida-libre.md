@@ -1,6 +1,6 @@
 ---
   title: "Caída Libre"
-  coverPhotoSrc: "caida-libre.png"
+  coverPhoto: "@assets/caida-libre.png"
   coverPhotoAlt: "Caída Libre"
   excerpt: "La caída libre es todo movimiento que se debe unicamente a la influencia de la gravedad"
 ---
