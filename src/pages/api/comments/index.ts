@@ -4,7 +4,6 @@ import { app } from "../../../firebase/server";
 import { getFirestore, Timestamp } from "firebase-admin/firestore";
 
 export const POST: APIRoute = async ({ request, redirect }) => {
-  console.log(request.headers)
   const formData = await request.formData();
   const name = formData.get("name")?.toString();
   const comment = formData.get("comment")?.toString();

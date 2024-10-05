@@ -2,30 +2,12 @@
 import "@fontsource-variable/chivo";
 import "@fontsource-variable/montserrat";
 import Arrow from "../components/Arrow.astro";
-import { getFirestore } from "firebase-admin/firestore";
-import { app } from "src/firebase/server";
+import Comments from "@components/Comments";
 
 interface Props {
 	title: string;
 	arrow?: boolean;
 }
-
-interface Comment {
-	id: string
-	name: string
-	comment: string
-	createdAt: Date
-}
-
-const db = getFirestore(app);
-const commentsRef = db.collection("comments");
-const commentsSnapshot = await commentsRef.orderBy("createdAt", "desc").get();
-const comments = commentsSnapshot.docs.map((doc) => ({
-	id: doc.id,
-	...doc.data(),
-	createdAt: doc.data().createdAt.toDate(),
-})) as Comment[];
-console.log(comments[0].createdAt)
 
 const { title, arrow } = Astro.props;
 ---
@@ -77,33 +59,7 @@ const { title, arrow } = Astro.props;
 						<button type="submit">Comentar</button>
 					</form>
 				</div>
-				<ul class="commentaries">
-					{
-						comments.map((comment) => (
-							<li class="commentaries__item">
-								<div class="commentaries__item-header">
-									<h3 title={comment.name}>
-										{comment.name}
-									</h3>
-									<p>
-										{
-											comment.createdAt.toLocaleDateString("es-CL", {
-												year: "numeric",
-												month: "short",
-												day: "numeric",
-												hour: "2-digit",
-												minute: "2-digit",
-											})
-										}
-									</p>
-								</div>
-								<p class="commentaries__comment">
-									{comment.comment}
-								</p>
-							</li>
-						))
-					}
-				</ul>
+				<Comments client:load />
 				<div>
 					<p>Daniela Buitrago Montoya</p>
 					<a class="hover-underline" href="mailto:danibuimon.09@gmail.com">danibuimon.09@gmail.com</a>
