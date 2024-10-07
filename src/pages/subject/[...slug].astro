@@ -6,21 +6,36 @@ import { type ConfigObject } from '@types';
 import CalculatorUC from '@components/CalculatorUC';
 import { Image } from 'astro:assets';
 
+
+// Esta función genera las rutas estaticas de cada uno de los markdown
+// Debe retornar un arreglo con los datos necesarios para generar cada ruta
 export async function getStaticPaths() {
+  // Esto es un arreglo de la información de los markdown
   const subjectEntries = await getCollection('subject');
 
   return subjectEntries.map(entry => ({
+    // params es lo que remplaza el parámetro dinámico de la ruta ([...slug])
     params: {
       slug: entry.slug
     },
+    // entry es el contenido unico de cada página
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
+// Saca el markdown que esta contenido en la prop de entry 
+// pero este solo contiene todo lo que esta por fuera de los frontmatter de cada markdown
 const { Content } = await entry.render();
 
+// El .glob sirve para importar archivos locales, que en este caso son
+// los arreglos con todas las calculadoras
 const calculatorsArray = await Astro.glob("../../lib/config-calculator/*.json");
+
+// .find itera en todos los elementos del arreglo buscando uno que cumpla con la condición que le pasemos
+// El default es el que contiene el objeto con la información de todos los json de calculadora
+// El signo ? sirve para que si en la condición de la izquierda da undefine no ejecute la condición de la derecha
+// con el .default que esta despues del signo ? estamos accediendo al contenido del json
 const calculatorConfig = calculatorsArray.find((file) => file.default[entry.slug])?.default as ConfigObject;
 
 ---
@@ -37,11 +52,16 @@ const calculatorConfig = calculatorsArray.find((file) => file.default[entry.slug
       </div>
     </div>
     {
+      // Esta condición es un corto circuito que me sirve para renderizar la calculadora
+      // cuando exista un archivo de configuración
       calculatorConfig && (
       <div class="calculators">
         <div class="container calculators__container">
           {calculatorConfig[entry.slug].map((configForm) => (
             entry.slug === "conversion-de-unidades" ? (
+              // El client:load le dice a astro que renderice el componente en el cliente
+              // porque por defecto todo lo renderiza en el servidor 
+              // Esto es necesario porque los hooks de read solo funcionan en el cliente 
               <CalculatorUC calculatorForm={configForm} client:load />
             ) : (
               <Calculator calculatorForm={configForm} client:load />

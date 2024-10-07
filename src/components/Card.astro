@@ -1,6 +1,8 @@
 ---
+// Componente recomendado para manejo de imagenes
 import { Image } from 'astro:assets';
 
+// Esto es una prop de Astro
 const { href, title, excerpt, image, imageAlt } = Astro.props;
 ---
 
@@ -8,6 +10,7 @@ const { href, title, excerpt, image, imageAlt } = Astro.props;
 	<a href={href} class="card">
 		<div class="card__container">
 			<figure class="card__figure">
+				<!-- Este componente recibe como src los metadatos de la imagen -->
 				<Image src={image} alt={imageAlt} class="card_image" />
 			</figure>
 			<div class="card__description">

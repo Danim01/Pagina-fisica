@@ -47,6 +47,8 @@ const { title, arrow } = Astro.props;
 			<div class="container">
 				<div>
 					<h2>Comentarios</h2>
+					<!-- enctype es el tipo de codificación que requiere el servidor de astro para
+					 entender los datos del formulario -->
 					<form class="comment-form" method="post" action="/api/comments" enctype="application/x-www-form-urlencoded">
 						<label>
 							Nombre

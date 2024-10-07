@@ -1,8 +1,10 @@
 ---
+// Esto es frontmatter, son los datos o logica necesaria para generar el html
 import Layout from '@layouts/Layout.astro';
 import Card from '@components/Card.astro';
 import { getCollection } from 'astro:content';
 
+// Subjects son los markdown
 const subjects = await getCollection("subject");
 ---
 
@@ -13,12 +15,15 @@ const subjects = await getCollection("subject");
 		</h1>
 		<div class="container-card">
 			{
-				subjects.map(subject => {
+				subjects.map((subject) => {
+					// El data es el que contiene toda la información del frontmatter del markdown
+					// Slug es un identificador único del markdown
 					const { slug, data } = subject
 					const { excerpt, coverPhoto, coverPhotoAlt, title } = data
 
 					return (
 						<Card
+						// Esta es la ruta para abrir la página asociada a cada tema
 							href={`/subject/${slug}`}
 							title={title}
 							image={coverPhoto}

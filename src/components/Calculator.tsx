@@ -11,17 +11,20 @@ interface Props {
 }
 
 export default function Calculator({ calculatorForm }: Props){
-  const [fieldName, setFieldName] = useState<string | null>(null)
+  // field = campo
+  const [fieldId, setFieldId] = useState<string | null>(null)
   const [inputName, setInputName] = useState<string | null>(null)
   const [results, setResults] = useState<Expression[] | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newFieldName = event.target.value;
+    const newFieldId = event.target.value;
 
-    const relatedField = calculatorForm.campos.find(campo => campo.id === newFieldName);
+    // Se esta guardando en esta variable todo el campo del input que fue seleccionado
+    const relatedField = calculatorForm.campos.find(campo => campo.id === newFieldId);
+    // Se guarda el name del input del campo que fue seleccionado
     const newInputName = relatedField?.input.name;
 
-    setFieldName(newFieldName)
+    setFieldId(newFieldId)
     setInputName(newInputName || null)
   }
 
@@ -29,8 +32,11 @@ export default function Calculator({ calculatorForm }: Props){
     event.preventDefault()
 
     const form = event.currentTarget
+    // Estamos extrayendo el name de cada input
     const formData = Object.fromEntries(new FormData(form)) as Record<string, string>
+    
 
+    // Si en el calculatorForm le llega una equation del json ejecutamos lo siguiente 
     if (calculatorForm.equation) {
       const newResults = calculate({
         equation: calculatorForm.equation,
@@ -42,8 +48,11 @@ export default function Calculator({ calculatorForm }: Props){
     }
   }
 
+  // filter crea un arreglo nuevo con todos lo que cumplan con la condición que le entreguemos
+  // El objetivo de este filtrado es excluir el input de lo que la persona quiere calcular
   const filteredFields = calculatorForm.campos.filter((campo) => {
-    return campo.id !== fieldName
+    // El id del campo debe ser diferente al id del campo que se selecciono
+    return campo.id !== fieldId
   })
 
   return (
@@ -65,7 +74,8 @@ export default function Calculator({ calculatorForm }: Props){
       </div>
       <form className={styles.form} onSubmit={handleSubmit}>
         {
-          fieldName && (
+          // Cuando existe el fieldId renderizo todos los campos que cumpla con lo que se necesita
+          fieldId && (
             <>
               <h4 style={{ textAlign: "center", marginBottom: "0" }}>Ingrese los datos necesarios</h4>
               {filteredFields.map((campo) => (
@@ -84,11 +94,13 @@ export default function Calculator({ calculatorForm }: Props){
       {
         results && (
           <div className={styles.results}>
-            <h4>Resultado{results && results?.length > 1 ? "s" : undefined}</h4>
-            <ol className={styles["results-list"]} inlist>
+            <h4>Resultado{results?.length > 1 ? "s" : undefined}</h4>
+            <ol className={styles["results-list"]} inlist="true">
               {
                 results?.map((result, i) => (
                   <li key={`calculator-result-${i}`}>
+                    {/* Katex es un componente que sirve para renderizar código 
+                    LaTeX = es un lenguaje para renderizar y escribir matemáticas */}
                     <Katex tex={result.toTeX()} className={styles["result-tex"]} />
                   </li>
                 ))
